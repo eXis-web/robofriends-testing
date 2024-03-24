@@ -17,7 +17,7 @@ describe('actions', () => {
 })
 
 describe("Fetch robots action PENDING", () => {
-  it("should creat a Pending action on request Robots", () => {
+  it("should createa a Pending action on request Robots", () => {
     const store = mockStore();
     store.dispatch(actions.requestRobots())
     const action = store.getActions();

@@ -12,8 +12,8 @@ beforeEach(() => {
     searchField: '',
     isPending: false
   }
-  wrapper = shallow(<MainPage {...mockProps}/>)
- })
+  wrapper = shallow(<MainPage {...mockProps} />)
+})
 
 it('renders without crashing', () => {
   expect(wrapper).toMatchSnapshot();
@@ -74,3 +74,15 @@ it('fileters Robots correctly 2', () => {
   expect(wrapper.instance().filterRobots()).toEqual([]);
 });
 
+it('displays "Loading" message when isPending is true', () => {
+  const mockProps = {
+    onRequestRobots: jest.fn(),
+    robots: [],
+    searchField: '',
+    isPending: true // встановлюємо isPending в true
+  }
+  wrapper = shallow(<MainPage {...mockProps}/>)
+
+  // Очікуємо, що в компоненті буде відображений текст "Loading"
+  expect(wrapper.find('h1').text()).toEqual('Loading');
+});
